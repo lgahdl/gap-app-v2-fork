@@ -72,6 +72,9 @@ export const CardNewReview = () => {
       toast.error("Error getting wallet client for wallet interaction. Please try again.");
       return;
     }
+    console.log("arbitrum.id", arbitrum.id);
+    console.log("chainID = ", chainId);
+    console.log("walletClient", walletClient);
 
     if (chainId != arbitrum.id) {
       toast.error("Must connect to Arbitrum to review");
