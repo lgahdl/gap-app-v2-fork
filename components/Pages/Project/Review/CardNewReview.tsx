@@ -104,6 +104,7 @@ export const CardNewReview = () => {
     );
 
     if (response instanceof Error) {
+      console.error("Error submitting review", response);
       toast.error("Error submitting review. Try again.");
       return;
     }

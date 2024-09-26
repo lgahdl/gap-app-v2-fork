@@ -51,10 +51,14 @@ export async function submitAttest(
     value: BigInt(0),
   };
 
+  console.log("AttestationRequestData:", attestationRequestData);
+
   const AttestationRequest: AttestationRequest = {
     schema: schemaUID,
     data: attestationRequestData,
   };
+
+  console.log("AttestationRequest:", AttestationRequest);
 
   const encodedData = encodeFunctionData({
     abi: [
@@ -92,8 +96,11 @@ export async function submitAttest(
     args: [AttestationRequest],
   });
 
+  console.log("EncodedData:", encodedData);
+
   if (walletClient.chain?.id !== arbitrum.id) {
     walletClient.switchChain({ id: arbitrum.id });
+    console.error("Must connect to Arbitrum to review");
     return Error("Must connect to Arbitrum to review");
   }
 
@@ -111,17 +118,22 @@ export async function submitAttest(
       chain: walletClient.chain,
     });
 
+    console.log("TransactionHash:", transactionHash);
+
     const transactionReceipt: TransactionReceipt = await waitForTransactionReceipt(publicClient, {
       hash: transactionHash,
     });
 
+    console.log("TransactionReceipt:", transactionReceipt);
+
     if (transactionReceipt.status !== "success") {
+      console.error("Transaction reverted");
       return Error("Transaction reverted");
     }
 
     return transactionReceipt;
   } catch (error) {
-    console.error(error);
+    console.error("Error sending transaction:", error);
     return Error(`Error sending transaction. ${error}`);
   }
 }
