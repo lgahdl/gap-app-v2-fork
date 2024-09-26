@@ -103,6 +103,7 @@ export async function submitAttest(
     Number(walletClient.chain?.id) !== Number(arbitrum.id),
   );
   if (walletClient.chain && Number(walletClient.chain.id) !== Number(arbitrum.id)) {
+    debugger;
     walletClient.switchChain({ id: arbitrum.id });
     console.error("Must connect to Arbitrum to review");
     return Error("Must connect to Arbitrum to review");
