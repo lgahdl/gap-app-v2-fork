@@ -34,7 +34,9 @@ export const CardNewReview = () => {
 
   const { address, chainId } = useAccount();
   const searchParams = useSearchParams();
+  console.log("config", config);
   const { data: walletClient } = useWalletClient({ config });
+  console.log("walletClient = 1", walletClient);
 
   useEffect(() => {
     // Fill the starts with a score of 1 when the badges render
