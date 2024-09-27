@@ -1,12 +1,5 @@
 import { http, createConfig } from "@wagmi/core";
-import {
-  arbitrum,
-  baseSepolia,
-  optimism,
-  optimismSepolia,
-  celo,
-  sei,
-} from "@wagmi/core/chains";
+import { arbitrum, baseSepolia, optimism, optimismSepolia, celo, sei } from "@wagmi/core/chains";
 import {
   coinbaseWallet,
   injectedWallet,
@@ -18,17 +11,12 @@ import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { appNetwork } from "../network";
 import { envVars } from "../enviromentVars";
 
+console.log("appNetwork", appNetwork);
 const connectors = connectorsForWallets(
   [
     {
       groupName: "Recommended",
-      wallets: [
-        metaMaskWallet,
-        rainbowWallet,
-        coinbaseWallet,
-        walletConnectWallet,
-        injectedWallet,
-      ],
+      wallets: [metaMaskWallet, rainbowWallet, coinbaseWallet, walletConnectWallet, injectedWallet],
     },
   ],
   {
@@ -37,7 +25,7 @@ const connectors = connectorsForWallets(
     appDescription: "Karma GAP",
     appUrl: "https://gap.karmahq.xyz",
     appIcon: "https://gap.karmahq.xyz/favicon.ico",
-  }
+  },
 );
 
 export const config = createConfig({
