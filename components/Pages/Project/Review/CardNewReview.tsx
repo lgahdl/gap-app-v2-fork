@@ -35,6 +35,7 @@ export const CardNewReview = () => {
   const { address, chainId } = useAccount();
   const searchParams = useSearchParams();
   console.log("config", config);
+  console.log("chainId", chainId);
   const { data: walletClient } = useWalletClient({ config });
   console.log("walletClient = 1", walletClient);
 
