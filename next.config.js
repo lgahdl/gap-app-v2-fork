@@ -10,6 +10,7 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   experimental: {
     webpackMemoryOptimizations: true,
+    webpackBuildWorker: true
   },
   webpack: (config) => {
     config.externals.push("pino-pretty", "lokijs", "encoding");
