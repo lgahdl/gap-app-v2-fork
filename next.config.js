@@ -8,6 +8,9 @@ const removeImports = require("next-remove-imports")();
 const nextConfig = {
   reactStrictMode: true,
   staticPageGenerationTimeout: 1000,
+  experimental: {
+    webpackMemoryOptimizations: true,
+  },
   webpack: (config) => {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
